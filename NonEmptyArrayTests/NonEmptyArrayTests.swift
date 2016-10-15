@@ -20,6 +20,7 @@ class NonEmptyArrayTests: XCTestCase {
 
     func testEmptyArrayInitializer() {
         XCTAssertNil(nilArray)
+        XCTAssertNotNil(notNilArray)
     }
     
     func testArray() {

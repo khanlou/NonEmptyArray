@@ -19,6 +19,10 @@ public struct NonEmptyArray<Element> {
         self.elements = array
     }
     
+    public init(elements: Element...) {
+        self.elements = elements
+    }
+    
     public var count: Int {
         return elements.count
     }

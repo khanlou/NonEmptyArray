@@ -12,14 +12,15 @@ import NonEmptyArray
 
 class NonEmptyArrayTests: XCTestCase {
     
+    let nilArray = NonEmptyArray(array: [])
+
+    let array = NonEmptyArray(array: [1, 2, 3])
+
     func testEmptyArrayInitializer() {
-        let array = NonEmptyArray(array: [])
-        XCTAssertNil(array)
+        XCTAssertNil(nilArray)
     }
     
     func testArray() {
-        let array = NonEmptyArray(array: [1, 2, 3])
         XCTAssertEqual(array?.count, 3)
     }
-    
 }

@@ -23,6 +23,10 @@ public struct NonEmptyArray<Element> {
         self.elements = elements
     }
     
+    public init?() {
+        return nil
+    }
+    
     public var count: Int {
         return elements.count
     }

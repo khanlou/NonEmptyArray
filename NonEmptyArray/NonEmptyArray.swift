@@ -13,7 +13,7 @@ public struct NonEmptyArray<Element> {
     fileprivate var elements: Array<Element>
     
     public init?(array: [Element]) {
-        guard array.count != 0 else {
+        guard !array.isEmpty else {
             return nil
         }
         self.elements = array

@@ -42,4 +42,16 @@ class NonEmptyArrayTests: XCTestCase {
         XCTAssert(type(of: array.last) == Int.self)
         XCTAssert(type(of: array.last) != Optional<Int>.self)
     }
+    
+    func testDescriptions() {
+        XCTAssertEqual(array.description, "[1, 2, 3]")
+        XCTAssertEqual(array.debugDescription, "[1, 2, 3]")
+    }
+    
+    func testSubscripting() {
+        XCTAssertEqual(array[0], 1)
+        XCTAssertEqual(array[1], 2)
+        XCTAssertEqual(array[2], 3)
+        XCTAssertEqual(array[1..<2].first, 2)
+    }
 }

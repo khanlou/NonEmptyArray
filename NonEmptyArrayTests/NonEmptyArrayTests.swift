@@ -54,4 +54,11 @@ class NonEmptyArrayTests: XCTestCase {
         XCTAssertEqual(array[2], 3)
         XCTAssertEqual(array[1..<2].first, 2)
     }
+    
+    func testAppend() {
+        var copy = array
+        copy.append(2)
+        XCTAssertEqual(copy.count, 4)
+        XCTAssertEqual(copy.last, 2)
+    }
 }

@@ -43,6 +43,14 @@ public struct NonEmptyArray<Element> {
         return false
     }
     
+    public func min(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> Element {
+        return try elements.min(by: areInIncreasingOrder)!
+    }
+    
+    public func max(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> Element {
+        return try elements.max(by: areInIncreasingOrder)!
+    }
+    
     public mutating func append(_ newElement: Element) {
         elements.append(newElement)
     }

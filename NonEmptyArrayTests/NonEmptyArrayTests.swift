@@ -67,4 +67,16 @@ class NonEmptyArrayTests: XCTestCase {
         XCTAssertEqual(appended.count, 4)
         XCTAssertEqual(appended.last, 7)
     }
+    
+    func testSequence() {
+        let anySequence = AnySequence(array)
+        let count = anySequence.reduce(0, { $0.0 + 1 })
+        XCTAssertEqual(count, array.count)
+    }
+    
+    func testCollection() {
+        let anyCollection = AnyCollection(array)
+        let count = anyCollection.reduce(0, { $0.0 + 1 })
+        XCTAssertEqual(count, array.count)
+    }
 }

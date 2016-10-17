@@ -102,6 +102,10 @@ extension NonEmptyArray where Element: Comparable {
     public func max() -> Element {
         return elements.max()!
     }
+    
+    public mutating func sort() {
+        elements.sort()
+    }
 }
 
 public func ==<Element: Equatable>(lhs: NonEmptyArray<Element>, rhs: NonEmptyArray<Element>) -> Bool {

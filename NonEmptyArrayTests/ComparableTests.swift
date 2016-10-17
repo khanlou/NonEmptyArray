@@ -12,10 +12,16 @@ import NonEmptyArray
 
 class ComparableTests: XCTestCase {
     
-    let array = NonEmptyArray(elements: 1, 2, 3)
+    let array = NonEmptyArray(elements: 2, 1, 3)
     
     func testMinAndMax() {
         XCTAssertEqual(array.min(), 1)
         XCTAssertEqual(array.max(), 3)
+    }
+    
+    func testSort() {
+        var copy = array
+        copy.sort()
+        XCTAssertTrue(copy == NonEmptyArray(elements: 1, 2, 3))
     }
 }

@@ -14,6 +14,22 @@ class RemovalTests: XCTestCase {
     
     let array = NonEmptyArray(elements: 1, 2, 3)
     
+    func testRemoveAt() {
+        var copy = array
+        try? copy.remove(at: 1)
+        XCTAssertEqual(Array(copy), [1, 3])
+        try? copy.remove(at: 0)
+        XCTAssertEqual(Array(copy), [3])
+        try? copy.remove(at: 0)
+        XCTAssertEqual(Array(copy), [3])
+        do {
+            try copy.remove(at: 0)
+            XCTFail()
+        } catch let error {
+            XCTAssert(error is InvalidArrayError)
+        }
+    }
+    
     func testRemoveFirst() {
         var copy = array
         try? copy.removeFirst()

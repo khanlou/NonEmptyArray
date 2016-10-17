@@ -8,6 +8,8 @@
 
 import Foundation
 
+public struct InvalidArrayError: Error { }
+
 public struct NonEmptyArray<Element> {
     
     fileprivate var elements: Array<Element>
@@ -72,6 +74,42 @@ public struct NonEmptyArray<Element> {
         copy.append(newElement)
         return copy
     }
+    
+    public mutating func remove(at index: Index) throws {
+        if elements.count == 1 {
+            throw InvalidArrayError()
+        }
+        elements.remove(at: index)
+    }
+    
+    public mutating func removeFirst() throws {
+        if elements.count == 1 {
+            throw InvalidArrayError()
+        }
+        elements.removeFirst()
+    }
+    
+    public mutating func removeFirst(_ n: Int) throws {
+        if elements.count == n {
+            throw InvalidArrayError()
+        }
+        elements.removeFirst(n)
+    }
+    
+    public mutating func removeLast() throws {
+        if elements.count == 1 {
+            throw InvalidArrayError()
+        }
+        elements.removeLast()
+    }
+    
+    public mutating func removeLast(_ n: Int) throws {
+        if elements.count == n {
+            throw InvalidArrayError()
+        }
+        elements.removeLast(n)
+    }
+
 }
 
 extension NonEmptyArray: CustomStringConvertible {

@@ -27,4 +27,16 @@ class AppendingTests: XCTestCase {
         XCTAssertEqual(appended.last, 7)
     }
     
+    func testInsertion() {
+        var copy = array
+        copy.insert(2, at: 1)
+        XCTAssertEqual(Array(copy), [1, 2, 2, 3])
+    }
+    
+    func testCollectionInsertion() {
+        var copy = array
+        copy.insert(contentsOf: AnyCollection([1, 2, 3]), at: 2)
+        XCTAssertEqual(Array(copy), [1, 2, 1, 2, 3, 3])
+    }
+    
 }

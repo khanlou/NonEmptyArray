@@ -23,7 +23,7 @@ public struct NonEmptyArray<Element> {
         self.elements = elements
     }
     
-    public init?<S : Sequence>(_ sequence: S) where S.Iterator.Element == Element {
+    public init?<S: Sequence>(_ sequence: S) where S.Iterator.Element == Element {
         self.init(array: Array<Element>(sequence))
     }
     
@@ -53,6 +53,14 @@ public struct NonEmptyArray<Element> {
     
     public func max(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> Element {
         return try elements.max(by: areInIncreasingOrder)!
+    }
+    
+    public mutating func insert<C: Collection>(contentsOf collection: C, at index: Index) where C.Iterator.Element == Element {
+        elements.insert(contentsOf: collection, at: index)
+    }
+    
+    public mutating func insert(_ newElement: Element, at index: Index) {
+        elements.insert(newElement, at: index)
     }
     
     public mutating func append(_ newElement: Element) {

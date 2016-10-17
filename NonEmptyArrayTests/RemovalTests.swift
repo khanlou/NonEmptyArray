@@ -30,4 +30,20 @@ class RemovalTests: XCTestCase {
         }
     }
     
+    func testRemoveLast() {
+        var copy = array
+        try? copy.removeLast()
+        XCTAssertEqual(Array(copy), [1, 2])
+        try? copy.removeLast()
+        XCTAssertEqual(Array(copy), [1])
+        try? copy.removeLast()
+        XCTAssertEqual(Array(copy), [1])
+        do {
+            try copy.removeLast()
+            XCTFail()
+        } catch let error {
+            XCTAssert(error is InvalidArrayError)
+        }
+    }
+    
 }

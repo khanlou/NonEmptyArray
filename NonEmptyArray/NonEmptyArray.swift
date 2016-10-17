@@ -103,3 +103,11 @@ extension NonEmptyArray where Element: Comparable {
         return elements.max()!
     }
 }
+
+public func ==<Element: Equatable>(lhs: NonEmptyArray<Element>, rhs: NonEmptyArray<Element>) -> Bool {
+    return lhs.elements == rhs.elements
+}
+
+public func !=<Element: Equatable>(lhs: NonEmptyArray<Element>, rhs: NonEmptyArray<Element>) -> Bool {
+    return lhs.elements != rhs.elements
+}

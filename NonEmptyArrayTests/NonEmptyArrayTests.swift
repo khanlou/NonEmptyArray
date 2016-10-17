@@ -32,6 +32,8 @@ class NonEmptyArrayTests: XCTestCase {
         } else {
             XCTFail()
         }
+        
+        XCTAssertNil(NonEmptyArray(AnySequence([])))
     }
     
     func testArray() {

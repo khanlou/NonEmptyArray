@@ -24,7 +24,7 @@ public struct NonEmptyArray<Element> {
     }
     
     public init?<S : Sequence>(_ sequence: S) where S.Iterator.Element == Element {
-        elements = Array<Element>(sequence)
+        self.init(array: Array<Element>(sequence))
     }
     
     public init?() {

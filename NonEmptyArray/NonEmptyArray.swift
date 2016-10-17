@@ -90,7 +90,7 @@ public struct NonEmptyArray<Element> {
     }
     
     public mutating func removeFirst(_ n: Int) throws {
-        if elements.count == n {
+        if elements.count <= n {
             throw InvalidArrayError()
         }
         elements.removeFirst(n)
@@ -104,7 +104,7 @@ public struct NonEmptyArray<Element> {
     }
     
     public mutating func removeLast(_ n: Int) throws {
-        if elements.count == n {
+        if elements.count <= n {
             throw InvalidArrayError()
         }
         elements.removeLast(n)

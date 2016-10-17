@@ -62,4 +62,38 @@ class RemovalTests: XCTestCase {
         }
     }
     
+    func testRemoveFirstN() {
+        var copy = array
+        try? copy.removeFirst(2)
+        XCTAssertEqual(Array(copy), [3])
+        try? copy.removeFirst(2)
+        XCTAssertEqual(Array(copy), [3])
+        copy.append(8)
+        try? copy.removeFirst(2)
+        XCTAssertEqual(Array(copy), [3, 8])
+        do {
+            try copy.removeFirst(2)
+            XCTFail()
+        } catch let error {
+            XCTAssert(error is InvalidArrayError)
+        }
+    }
+    
+    func testRemoveLastN() {
+        var copy = array
+        try? copy.removeLast(2)
+        XCTAssertEqual(Array(copy), [1])
+        try? copy.removeLast(2)
+        XCTAssertEqual(Array(copy), [1])
+        copy.append(6)
+        try? copy.removeLast(2)
+        XCTAssertEqual(Array(copy), [1, 6])
+        do {
+            try copy.removeLast(2)
+            XCTFail()
+        } catch let error {
+            XCTAssert(error is InvalidArrayError)
+        }
+    }
+    
 }

@@ -109,7 +109,13 @@ public struct NonEmptyArray<Element> {
         }
         elements.removeLast(n)
     }
-
+    
+    public mutating func popLast() throws -> Element {
+        if elements.count == 1 {
+            throw InvalidArrayError()
+        }
+        return elements.popLast()!
+    }
 }
 
 extension NonEmptyArray: CustomStringConvertible {

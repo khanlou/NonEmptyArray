@@ -96,4 +96,24 @@ class RemovalTests: XCTestCase {
         }
     }
     
+    func testPopLast() {
+        var copy = array
+        var last = try? copy.popLast()
+        XCTAssertEqual(Array(copy), [1, 2])
+        XCTAssertEqual(last, 3)
+        last = try? copy.popLast()
+        XCTAssertEqual(Array(copy), [1])
+        XCTAssertEqual(last, 2)
+        last = try? copy.popLast()
+        XCTAssertEqual(Array(copy), [1])
+        XCTAssertNil(last)
+        do {
+            let _ = try copy.popLast()
+            XCTFail()
+        } catch let error {
+            XCTAssert(error is InvalidArrayError)
+        }
+
+    }
+    
 }

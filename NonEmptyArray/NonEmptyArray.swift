@@ -23,6 +23,10 @@ public struct NonEmptyArray<Element> {
         self.elements = elements
     }
     
+    public init?<S : Sequence>(_ sequence: S) where S.Iterator.Element == Element {
+        elements = Array<Element>(sequence)
+    }
+    
     public init?() {
         return nil
     }

@@ -18,11 +18,20 @@ class NonEmptyArrayTests: XCTestCase {
     
     let array = NonEmptyArray(elements: 1, 2, 3)
 
-    func testEmptyArrayInitializer() {
+    func testEmptyArrayInitializers() {
         XCTAssertNil(nilArray)
         XCTAssertNotNil(notNilArray)
         
         XCTAssertNil(NonEmptyArray<Int>())
+    }
+    
+    func testSequenceInitializer() {
+        let sequenceInitalized = NonEmptyArray(AnySequence([1, 2, 3]))
+        if let nonEmptyArray = sequenceInitalized {
+            XCTAssertTrue(array == nonEmptyArray)
+        } else {
+            XCTFail()
+        }
     }
     
     func testArray() {

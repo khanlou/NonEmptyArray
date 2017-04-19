@@ -141,12 +141,19 @@ extension NonEmptyArray: Collection {
         return count
     }
     
-    public subscript(_ index: Int) -> Element {
-        return elements[index]
-    }
-    
     public func index(after i: Int) -> Int {
         return i + 1
+    }
+}
+
+extension NonEmptyArray: MutableCollection {
+    public subscript(_ index: Int) -> Element {
+        get {
+            return elements[index]
+        }
+        set {
+            elements[index] = newValue
+        }
     }
 }
 

@@ -66,6 +66,12 @@ class NonEmptyArrayTests: XCTestCase {
         XCTAssertEqual(array[1..<2].first, 2)
     }
     
+    func testSubscriptMutation() {
+        var copy = array
+        copy[0] = 0
+        XCTAssertEqual(copy[0], 0, "A mutable Array should support subscript set operation.")
+    }
+    
     func testSequence() {
         let anySequence = AnySequence(array)
         let count = anySequence.reduce(0, { $0.0 + 1 })

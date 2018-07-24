@@ -130,6 +130,19 @@ extension NonEmptyArray: CustomDebugStringConvertible {
     }
 }
 
+extension NonEmptyArray: Codable where Element : Codable {
+
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        let array: [Element] = try values.decode([Element].self, forKey: .elements)
+        self.elements = array
+    }
+
+    private enum CodingKeys: String, CodingKey {
+        case elements
+    }
+}
+
 extension NonEmptyArray: Collection {
     public typealias Index = Int
     
